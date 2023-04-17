@@ -97,8 +97,6 @@ class PedidosController extends Controller
         $pedido->delete();
 
          //$pedidos = Pedidos::where('status' , '0')->latest('created_at')->paginate(10);
-
-
         return redirect()->route('admin.pedidos.index', $pedido)->with('info', 'El pedido se eliminó con éxito');
     }
 }

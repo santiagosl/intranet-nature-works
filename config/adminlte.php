@@ -318,15 +318,34 @@ return [
         ],
         ['header' => 'Administrador'],
         [
-            'text' => 'Pedidos',
+            'text' => 'Listado de pedidos',
             'route'  => 'admin.pedidos.index',
             'icon' => 'fab fa-fw fa-buffer',
 
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Listado de usuarios',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+        ],
+        ['header' => 'Opciones de pedidos'],
+        [
+            'text' => 'Crear nuevo pedido',
+            'route'  => 'admin.pedidos.create',
+            'icon' => 'fab fa-fw fa-buffer',
+
+        ],
+        [
+            'text' => 'Crear nuevo usuario',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        ['header' => 'Vista usuario'],
+        [
+            'text' => 'Lista pedidos usuarios',
+            'route'  => 'pedidos.index',
+            'icon' => 'fab fa-fw fa-buffer',
+
         ],
 /*         [
             'text'    => 'multilevel',
