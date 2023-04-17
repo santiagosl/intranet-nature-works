@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <div class="card">
+    <div class="card w-50">
         <div class="card-body">
             {!! Form::model($pedido,['route' => ['admin.pedidos.update', $pedido], 'method' => 'PUT']) !!}
 

@@ -16,7 +16,7 @@ class PedidosController extends Controller
     public function index()
     {
         $pedidos = Pedidos::all();
-        //$pedidos = Pedidos::where('status' , '0')->latest('created_at')->paginate(10);
+        //$pedidos = Pedidos::where('status' , '<>' , null)->latest('created_at')->paginate(10);
         return view('admin.pedidos.index', compact('pedidos'));
     }
 
@@ -95,8 +95,8 @@ class PedidosController extends Controller
     public function destroy(Pedidos $pedido)
     {
         $pedido->delete();
-
-         //$pedidos = Pedidos::where('status' , '0')->latest('created_at')->paginate(10);
+        $pdf = Pdf::where('imageable_id' , $pedido->id);
+        $pdf->delete();
         return redirect()->route('admin.pedidos.index', $pedido)->with('info', 'El pedido se eliminó con éxito');
     }
 }

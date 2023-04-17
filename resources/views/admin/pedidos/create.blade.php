@@ -7,19 +7,21 @@
 @stop
 
 @section('content')
-    <div class="card">
+    <div class="card w-50">
         <div class="card-body">
             {!! Form::open(['route' => 'admin.pedidos.store' ,  'files' => true]) !!}
 
                 <div class="form-group">
                     {!! Form::label('fecha_creacion', 'Fecha') !!}
                     {!! Form::date('fecha_creacion', null,  ['class' => 'form-control']) !!}
+
                     @error('fecha_creacion')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
 
                 </div>
 
+               
                 <div class="form-group">
                     {!! Form::label('referencia', 'Referencia') !!}
                     {!! Form::text('referencia', null, ['class' => 'form-control', 'placeholder' => 'Indica una referencia']) !!}

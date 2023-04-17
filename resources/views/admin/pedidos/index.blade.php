@@ -12,7 +12,6 @@
             <strong>{{session('info')}}</strong>
         </div>
     @endif
-
     <div class="card">
         <div class="card-header">
             <a class="btn btn-secondary" href="{{route('admin.pedidos.create')}}">Crear pedido</a>
@@ -28,14 +27,22 @@
                         <th>Notas</th>
                         <th>Material comercial</th>
                         <th>Transporte</th>
-                        <th>Fecha de recogida</th>
+                        <th>Recogida</th>
                         <th>Ok Recogida</th>
+                        <th>Acción</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($pedidos as $item)
                         <tr>
-                            <td>{{$item->status}}</td>
+   
+                            @if ($item->status == '0')
+                                <td class="text-red-600">Borrador</td>
+                            @else
+                                <td>Listo</td>
+                            @endif
+                           
                             <td>{{$item->fecha_creacion}}</td>
                             <td>{{$item->referencia}}</td>
                             <td>{{$item->n_albaran}}</td>
@@ -61,9 +68,10 @@
                 </tbody>
             </table>
         </div>
-{{--         <div class="mt-5">
+{{--         <div>
             {{$pedidos->links()}}
-        </div> --}}
-    </div>
+        </div>
+ --}}
 
 @stop
+
