@@ -8,6 +8,7 @@
 
 @section('content')
     @livewire('admin.user-index')
+    @livewireScripts
 @stop
 
 @section('css')

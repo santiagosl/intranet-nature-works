@@ -22,7 +22,9 @@ class PedidosController extends Controller
     public function index()
     {
         $pedidos = Pedidos::all();
+        
         //$pedidos = Pedidos::where('status' , '<>' , null)->latest('created_at')->paginate(10);
+        //$users = User::where('name', 'LIKE' , '%' . $this->word . '%')->orWhere('email', 'LIKE' , '%' . $this->word . '%')->paginate();
         return view('admin.pedidos.index', compact('pedidos'));
     }
 
@@ -34,9 +36,6 @@ class PedidosController extends Controller
         return view('admin.pedidos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -64,25 +63,16 @@ class PedidosController extends Controller
  
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Pedidos $pedido)
     {
         return view('admin.pedidos.show', compact('pedido'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Pedidos $pedido)
     {
         return view('admin.pedidos.edit', compact('pedido'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Pedidos $pedido)
     {
         $request->validate([
@@ -95,9 +85,6 @@ class PedidosController extends Controller
         return redirect()->route('admin.pedidos.edit', $pedido)->with('info', 'El pedido se actualizó con éxito');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Pedidos $pedido)
     {
         $pedido->delete();

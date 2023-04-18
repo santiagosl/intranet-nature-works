@@ -6,6 +6,8 @@
     <h1>Listado de pedidos</h1>
 @stop
 
+@livewireScripts
+
 @section('content')
     @if (session('info'))
         <div class="alert alert-success">
@@ -73,3 +75,6 @@
         </div> --}}
 @stop
 
+@section('js')
+   
+@stop

@@ -12,7 +12,7 @@ class UserIndex extends Component
 
     protected $paginationTheme = "bootstrap";
     
-    public $word;
+    public $word = "";
 
     public function updatingSearch(){
         $this->resetPage();
@@ -20,9 +20,7 @@ class UserIndex extends Component
 
     public function render()
     {
-        $users = User::where('name', 'LIKE' , '%' . $this->word . '%')->paginate();
-
-        /* ->orWhere('email', 'LIKE' , '%' . $this->word . '%') */
+        $users = User::where('name', 'LIKE' , '%' . $this->word . '%')->orWhere('email', 'LIKE' , '%' . $this->word . '%')->paginate();
         return view('livewire.admin.user-index', compact('users'));
     }
 }

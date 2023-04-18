@@ -2,10 +2,8 @@
    <div class="card">
 
     <div class="card-header">
-        <input type="text" wire:model="word" class="form-control" placeholder="Ingrese el email o correo de un usuario" />
+        <input wire:model.lazy="word" type="text"  class="form-control" placeholder="Ingrese el email o correo de un usuario">
     </div>
-
-    <h1>{{ $word }}</h1>
 
     @if ($users->count())    
     
