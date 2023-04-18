@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('pdf');
         Storage::makeDirectory('pdf');
 
+        $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(PedidosSeeder::class);
     }

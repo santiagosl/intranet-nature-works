@@ -3,15 +3,15 @@
 @section('title', 'Nature Works')
 
 @section('content_header')
-    <h1>Panel administrador</h1>
+    <h1>Lista de usuarios</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    @livewire('admin.user-index')
 @stop
 
 @section('css')
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+{{--     <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')

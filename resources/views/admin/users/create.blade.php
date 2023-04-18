@@ -3,7 +3,7 @@
 @section('title', 'Nature Works')
 
 @section('content_header')
-    <h1>Panel administrador</h1>
+    <h1>Crear un nuevo usuario</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
 @stop
 
 @section('css')
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+{{--     <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')

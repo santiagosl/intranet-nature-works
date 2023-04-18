@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 use App\Models\Pedidos;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Pdf;
+use Livewire\WithPagination;
 
 class PedidosController extends Controller
 {
+
+    use WithPagination;
+
+    protected $paginationTheme = "bootstrap";
+
     /**
      * Display a listing of the resource.
      */

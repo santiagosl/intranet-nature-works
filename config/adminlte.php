@@ -316,7 +316,8 @@ return [
             'route'       => 'admin.home',
             'icon'        => 'fas fa-tachometer-alt fa-fw',
         ],
-        ['header' => 'Administrador'],
+        
+        ['header' => 'Pedidos'],
         [
             'text' => 'Listado de pedidos',
             'route'  => 'admin.pedidos.index',
@@ -324,28 +325,30 @@ return [
 
         ],
         [
-            'text' => 'Listado de usuarios',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        ['header' => 'Opciones de pedidos'],
-        [
-            'text' => 'Crear nuevo pedido',
+            'text' => 'Crear pedidos',
             'route'  => 'admin.pedidos.create',
             'icon' => 'fab fa-fw fa-buffer',
 
         ],
+
+        ['header' => 'Usuarios'],
+        [
+            'text' => 'Lista de usuarios',
+            'route'  => 'admin.users.index',
+            'icon' => 'fas fa-users fa-fw',
+
+        ],
         [
             'text' => 'Crear nuevo usuario',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'route'  => 'admin.users.create',
+            'icon' => 'fas fa-users fa-fw',
+
         ],
         ['header' => 'Vista usuario'],
         [
             'text' => 'Lista pedidos usuarios',
             'route'  => 'pedidos.index',
             'icon' => 'fab fa-fw fa-buffer',
-
         ],
 /*         [
             'text'    => 'multilevel',

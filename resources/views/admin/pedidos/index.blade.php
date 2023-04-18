@@ -68,10 +68,8 @@
                 </tbody>
             </table>
         </div>
-{{--         <div>
+{{--         <div class="card-footer">
             {{$pedidos->links()}}
-        </div>
- --}}
-
+        </div> --}}
 @stop
 
