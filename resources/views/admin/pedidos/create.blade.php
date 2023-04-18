@@ -11,6 +11,8 @@
         <div class="card-body">
             {!! Form::open(['route' => 'admin.pedidos.store' ,  'files' => true]) !!}
 
+                {!! Form::hidden('user_id', auth()->user()->id) !!}
+                
                 <div class="form-group">
                     {!! Form::label('fecha_creacion', 'Fecha') !!}
                     {!! Form::date('fecha_creacion', null,  ['class' => 'form-control']) !!}
@@ -20,7 +22,6 @@
                     @enderror
 
                 </div>
-
                
                 <div class="form-group">
                     {!! Form::label('referencia', 'Referencia') !!}

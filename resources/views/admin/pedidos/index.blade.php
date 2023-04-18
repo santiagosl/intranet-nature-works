@@ -22,6 +22,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Estado</th>
                         <th>Fecha</th>
                         <th>Referencia</th>
@@ -39,8 +40,9 @@
                     @foreach ($pedidos as $item)
                         <tr>
    
+                            <td width="5px">{{$item->id}}</td>
                             @if ($item->status == '0')
-                                <td class="text-red-600">Borrador</td>
+                                <td width="10px">Borrador</td>
                             @else
                                 <td>Listo</td>
                             @endif
@@ -62,17 +64,15 @@
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                 </form>
-
                             </td>
                         </tr>
-                    @endforeach
-                  
+                    @endforeach                
                 </tbody>
             </table>
         </div>
-{{--         <div class="card-footer">
+        <div class="card-footer">
             {{$pedidos->links()}}
-        </div> --}}
+        </div>
 @stop
 
 @section('js')

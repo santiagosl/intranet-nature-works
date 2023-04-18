@@ -13,9 +13,14 @@
         </div>
     @endif
 
+    <div class="flex-auto">
+        <div class="flex-1">Contenido columna 1</div>
+        <div class="flex-1">Contenido columna 2</div>
+      </div>
+      
     <div class="card w-50">
         <div class="card-body">
-            {!! Form::model($pedido,['route' => ['admin.pedidos.update', $pedido], 'method' => 'PUT']) !!}
+            {!! Form::model($pedido,['route' => ['admin.pedidos.update', $pedido], 'method' => 'PUT' , 'enctype' => 'multipart/form-data']) !!}
 
                 <div class="form-group">
                     {!! Form::label('fecha_creacion', 'Fecha') !!}

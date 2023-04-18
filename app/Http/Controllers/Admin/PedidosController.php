@@ -8,6 +8,7 @@ use App\Models\Pedidos;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Pdf;
 use Livewire\WithPagination;
+use App\Http\Requests\PedidosRequest;
 
 class PedidosController extends Controller
 {
@@ -21,10 +22,10 @@ class PedidosController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedidos::all();
-        
-        //$pedidos = Pedidos::where('status' , '<>' , null)->latest('created_at')->paginate(10);
+        //$pedidos = Pedidos::all();
         //$users = User::where('name', 'LIKE' , '%' . $this->word . '%')->orWhere('email', 'LIKE' , '%' . $this->word . '%')->paginate();
+
+        $pedidos = Pedidos::where('status' , '<>' , null)->latest('created_at')->paginate(10);
         return view('admin.pedidos.index', compact('pedidos'));
     }
 
@@ -36,13 +37,8 @@ class PedidosController extends Controller
         return view('admin.pedidos.create');
     }
 
-    public function store(Request $request)
+    public function store(PedidosRequest $request)
     {
-        $request->validate([
-            'fecha_creacion' => 'required',
-            'referencia' => 'required',
-            'n_albaran' => 'required'
-        ]);
 
         $pedido = Pedidos::create($request->all());
         
@@ -59,7 +55,7 @@ class PedidosController extends Controller
             ]);
         }
        
-        return redirect()->route('admin.pedidos.edit', $pedido)->with('info', 'El pedido se creó con éxito');
+        return redirect()->route('admin.pedidos.index', $pedido)->with('info', 'El pedido se creó con éxito');
  
     }
 
@@ -82,7 +78,24 @@ class PedidosController extends Controller
         ]);
 
         $pedido->update($request->all());
-        return redirect()->route('admin.pedidos.edit', $pedido)->with('info', 'El pedido se actualizó con éxito');
+
+                
+        if($request->file('pdf_1')){
+            $url = Storage::put('pdf' , $request->file('pdf_1'));
+            $pedido->pdf()->create([
+                'url' => $url
+            ]);
+        }
+        if($request->file('pdf_2')){
+            $url = Storage::put('pdf' , $request->file('pdf_2'));
+            $pedido->pdf()->create([
+                'url' => $url
+            ]);
+        }
+
+        return redirect()->route('admin.pedidos.index', $pedido)->with('info', 'El pedido se actualizó con éxito');
+        //return $request;
+        //dd($request);
     }
 
     public function destroy(Pedidos $pedido)
