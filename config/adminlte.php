@@ -344,6 +344,7 @@ return [
             'icon' => 'fas fa-users fa-fw',
 
         ],
+        
         ['header' => 'Vista usuario'],
         [
             'text' => 'Lista pedidos usuarios',
