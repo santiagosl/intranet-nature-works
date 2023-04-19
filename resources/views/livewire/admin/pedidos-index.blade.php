@@ -1,6 +1,5 @@
 <div class="card">
-    
-        @if (session('info'))
+    @if (session('info'))
             <div class="alert alert-success">
                 <strong>{{session('info')}}</strong>
             </div>
@@ -9,10 +8,11 @@
         <div class="card-header">
             <input wire:model.lazy="word" type="text"  class="form-control" placeholder="Buscar por: Estado, Referencia, Nº de albarán">
         </div>
- 
+        
+        {{--  Boton para crear pedidos
         <div class="card-header">
             <a class="btn btn-secondary" href="{{route('admin.pedidos.create')}}">Crear pedido</a>
-        </div>
+        </div> --}}
 
         @if ($pedidos->count())
         <div class="card-body">
@@ -38,12 +38,7 @@
                         <tr>
    
                             <td width="5px">{{$item->id}}</td>
-                            @if ($item->status == '0')
-                                <td width="10px">Borrador</td>
-                            @else
-                                <td>Listo</td>
-                            @endif
-                           
+                            <td width="10px">{{$item->status}}</td>
                             <td>{{$item->fecha_creacion}}</td>
                             <td>{{$item->referencia}}</td>
                             <td>{{$item->n_albaran}}</td>
@@ -79,7 +74,7 @@
             </div>
 
         @endif
-    </div>
+</div>
 
     
 

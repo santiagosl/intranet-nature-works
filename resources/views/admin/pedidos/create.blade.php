@@ -87,13 +87,17 @@
             
                             {!! Form::label('status', 'Estado del pedido') !!}
                             <div class="form-group">
-                                {!! Form::radio('status', 0, true) !!}
+                                {!! Form::radio('status', 'Borrador', true) !!}
                                 Pedido pendiente(no se mostrará en el resumen)
                             </div>
             
                             <div class="form-group">
-                                {!! Form::radio('status', 1) !!}
+                                {!! Form::radio('status', 'Listo') !!}
                                 Pedido listo para preparar
+                            </div>
+                            <div class="form-group">
+                                {!! Form::radio('status', 'Finalizado') !!}
+                                Pedido finalizado
                             </div>
                         </div>
                     </div>

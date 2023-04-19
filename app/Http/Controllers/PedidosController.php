@@ -9,7 +9,7 @@ class PedidosController extends Controller
 {
     public function index(){
 
-        $pedidos = Pedidos::where('status' , '1')->latest('created_at')->paginate(10);
+        $pedidos = Pedidos::where('status' , 'Listo')->latest('created_at')->paginate(10);
         
         return view('pedidos.index' , compact('pedidos'));
     }
