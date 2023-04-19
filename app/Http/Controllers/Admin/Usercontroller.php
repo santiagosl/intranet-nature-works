@@ -18,7 +18,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        $user = User::all();
+        return view('admin.users.create', compact('user'));
     }
 
     public function store(Request $request)
@@ -53,7 +54,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->roles()->sync($request->roles);
-        return redirect()->route('admin.users.edit', $user)->with('info', 'Se asignó los roles correctamente');
+        return redirect()->route('admin.users.index', $user)->with('info', 'Se asignó los roles correctamente');
     }
 
     public function destroy(User $user)

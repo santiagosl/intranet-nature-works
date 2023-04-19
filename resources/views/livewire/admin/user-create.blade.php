@@ -39,6 +39,18 @@
             </div>
 
             {!! Form::submit('Crear pedido', ['class' => 'btn btn-primary']) !!}
-        {!! Form::close() !!}
+        
+{{--             {!! Form::close() !!}
+                {!! Form::model($user, ['route' => ['admin.users.update' , $user], 'method' => 'put']) !!}
+                @foreach ($roles as $rol)
+                    <div>
+                        <label>
+                            {!! Form::checkbox("roles[]", $rol->id, null, ['class' => 'mr-1']) !!}
+                            {{$rol->name}}
+                        </label>
+                    </div>                
+                @endforeach
+                {!! Form::submit('Asignar rol', ['class' => 'btn btn-primary mt-2']) !!}
+            {!! Form::close() !!} --}}
     </div>
 </div>

@@ -15,7 +15,7 @@
                     <div class="col card mr-1">
                         <div class="card-body">
                             <div class="form-group">
-                                {!! Form::label('fecha_creacion', 'Fecha') !!}
+                                {!! Form::label('fecha_creacion', 'Fecha*') !!}
                                 {!! Form::date('fecha_creacion', null,  ['class' => 'form-control']) !!}
             
                                 @error('fecha_creacion')
@@ -25,7 +25,7 @@
                             </div>
                            
                             <div class="form-group">
-                                {!! Form::label('referencia', 'Referencia') !!}
+                                {!! Form::label('referencia', 'Referencia*') !!}
                                 {!! Form::text('referencia', null, ['class' => 'form-control', 'placeholder' => 'Indica una referencia']) !!}
                                 @error('referencia')
                                     <span class="text-danger">{{$message}}</span>
@@ -34,7 +34,7 @@
                             </div>
             
                             <div class="form-group">
-                                {!! Form::label('n_albaran', 'Número de albarán') !!}
+                                {!! Form::label('n_albaran', 'Número de albarán*') !!}
                                 {!! Form::text('n_albaran', null, ['class' => 'form-control', 'placeholder' => 'Indica un albarán']) !!}
                                 @error('n_albaran')
                                     <span class="text-danger">{{$message}}</span>
@@ -100,6 +100,10 @@
                 </div>
             {!! Form::submit('Crear pedido', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
+        <div class="form-group mt-3">
+            <p>(*) Campos obligatorios</p>
+        </div>
+       
     </div>
 </div>
 @stop
