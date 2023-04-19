@@ -15,7 +15,7 @@ class PedidosSeeder extends Seeder
      */
     public function run(): void
     {
-        $pedidos = Pedidos::factory(2)->create();
+        $pedidos = Pedidos::factory(50)->create();
 
         foreach($pedidos as $pedido){
             Pdf::factory(1)->create([

@@ -27,17 +27,6 @@
                 @enderror
             </div>
 
-            {!! Form::label('name_role', 'Permisos') !!}
-            <div class="form-group">
-                {!! Form::radio('name_role', '1') !!}
-                Administrador
-            </div>
-
-            <div class="form-group">
-                {!! Form::radio('name_role', '2', true) !!}
-                Comercial
-            </div>
-
             {!! Form::submit('Crear pedido', ['class' => 'btn btn-primary']) !!}
         
 {{--             {!! Form::close() !!}

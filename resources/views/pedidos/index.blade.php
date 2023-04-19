@@ -3,9 +3,8 @@
     <section class="container px-15 mx-auto">
         <div class="flex flex-col mt-4 px-4">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-6">
-
-                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                    <div class="mb-5">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div id="links_pedidos" class="mb-5">
                         {{$pedidos->links()}}
                     </div>
                     <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
