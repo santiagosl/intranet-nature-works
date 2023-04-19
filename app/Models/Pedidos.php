@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedidos extends Model
 {
     use HasFactory;
+    //protected $dateFormat = 'd-m-Y';
 
     protected $fillable = [   'fecha_creacion', 'referencia' , 'n_albaran' 
                             , 'observaciones' , 'material_comercial', 'transporte'

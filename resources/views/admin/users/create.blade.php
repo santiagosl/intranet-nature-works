@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nature Works')
+@section('title', 'Nature Works - Crear Usuario')
 
 @section('content_header')
     <h1>Crear un nuevo usuario</h1>

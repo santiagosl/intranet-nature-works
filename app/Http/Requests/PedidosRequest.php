@@ -29,9 +29,7 @@ class PedidosRequest extends FormRequest
         $rules = [
             'fecha_creacion'    => 'required',
             'referencia'        => 'required',
-            'n_albaran'         => 'required',
-            'status'            => 'required|in:0,1'
-
+            'n_albaran'         => 'required'
         ];
         
         return $rules;

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string  ('transporte')->nullable();
             $table->date    ('fecha_recogida')->nullable();
             $table->string  ('confirmacion_recogida')->nullable();
-            $table->enum  ('status', ["Borrador","Listo","Finalizado"])->default("Borrador");
+            $table->enum  ('status', ["Borrador","Listo","Finalizado"])->default("Listo");
             $table->timestamps();
         });
     }

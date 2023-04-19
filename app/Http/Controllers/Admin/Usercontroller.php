@@ -11,19 +11,19 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
 
-    public function index()
-    {
+    public function index(){
+
         return view('admin.users.index');
     }
 
-    public function create()
-    {
+    public function create(){
+
         $user = User::all();
         return view('admin.users.create', compact('user'));
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+
         $password = bcrypt($request->input('password'));
         $user = User::create([
             'name'      => $request->input('name'),
@@ -62,5 +62,3 @@ class UserController extends Controller
         return redirect()->route('admin.users.index', $user)->with('info', 'El usuario se eliminó con éxito');
     }
 }
-
-

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nature Works')
+@section('title', 'Nature Works - Pedidos')
 
 @section('content_header')
     <h1>Listado de pedidos</h1>
