@@ -17,7 +17,8 @@ class PedidosController extends Controller{
     public function index(){
         //$pedidos = Pedidos::all();
         //$users = User::where('name', 'LIKE' , '%' . $this->word . '%')->orWhere('email', 'LIKE' , '%' . $this->word . '%')->paginate();
-        $pedidos = Pedidos::where('status' , '<>' , null)->latest('created_at')->paginate(10);
+        $pedidos = Pedidos::where('status')->latest('created_at')->paginate(5);
+        //$pedidos = Pedidos::where('status' , '<>' , null)->paginate(10);
         return view('admin.pedidos.index', compact('pedidos'));
     }
 
@@ -51,7 +52,9 @@ class PedidosController extends Controller{
     }
 
     public function edit(Pedidos $pedido){
-        return view('admin.pedidos.edit', compact('pedido'));
+        $pdfs = Pdf::where('imageable_id' , $pedido->id)->get();
+        return view('admin.pedidos.edit', compact('pedido', 'pdfs'));
+        //dd($pdfs);
     }
 
     public function update(Request $request, Pedidos $pedido){
@@ -78,7 +81,7 @@ class PedidosController extends Controller{
             ]);
         }
 
-        return redirect()->route('admin.pedidos.index', $pedido)->with('info', 'El pedido se actualizó con éxito');
+        return redirect()->route('admin.pedidos.edit', $pedido)->with('info', 'El pedido se actualizó con éxito');
     }
 
     public function destroy(Pedidos $pedido){
@@ -87,5 +90,12 @@ class PedidosController extends Controller{
         $pdf = Pdf::where('imageable_id' , $pedido->id);
         $pdf->delete();
         return redirect()->route('admin.pedidos.index', $pedido)->with('info', 'El pedido se eliminó con éxito');
+    }
+
+    public function delete(Request $request, Pedidos $pedido){
+        
+        $pdf = Pdf::where('id' , $request->id);
+        $pdf->delete();
+        return redirect()->route('admin.pedidos.edit',  $request->idPedido)->with('info', 'El pedido se eliminó con éxito');
     }
 }

@@ -77,34 +77,42 @@
                         <div class="col card mr-1">
                             <div class="card-body">
                                 <div class="form-group">
-                                    {!! Form::label('pdf_1', 'Documento 1') !!}
+                                    {!! Form::label('agregar_documento', 'Agregar nuevo documento al pedido') !!}
                                     {!! Form::file('pdf_1', null,  ['class' => 'form-control']) !!}
                                 </div>
-                
-                                <div class="form-group">
-                                    {!! Form::label('pdf_2', 'Documento 2') !!}
-                                    {!! Form::file('pdf_2', null,  ['class' => 'form-control']) !!}
-                                </div>
-                
-                                <div class="form-group">
-                                    {!! Form::radio('status', 'Borrador', true) !!}
-                                    Pedido pendiente(no se mostrará en el resumen)
-                                </div>
-                
-                                <div class="form-group">
-                                    {!! Form::radio('status', 'Listo') !!}
-                                    Pedido listo para preparar
-                                </div>
-                                                
-                                <div class="form-group">
-                                    {!! Form::radio('status', 'Finalizado') !!}
-                                    Pedido finalizado
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col card mr-1">
+                        <div class="card-body">
+                            {!! Form::label('status_pedidos', 'Status del pedido') !!}
+                            <div class="form-group">
+                                {!! Form::radio('status', 'Borrador', true) !!}
+                                Pedido pendiente(no se mostrará en el resumen)
+                            </div>
+            
+                            <div class="form-group">
+                                {!! Form::radio('status', 'Listo') !!}
+                                Pedido listo para preparar
+                            </div>
+                                            
+                            <div class="form-group">
+                                {!! Form::radio('status', 'Finalizado') !!}
+                                Pedido finalizado
                             </div>
                         </div>
                     </div>
                 {!! Form::submit('Actualizar pedido', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
+
+            {!! Form::label('eliminar_documento', 'Eliminar documento') !!}
+            @foreach ($pdfs as $pdf)
+                {!! Form::model($pdf,['route' => ['admin.pedidos.delete', $pdf, $pedido], 'method' => 'PUT']) !!}
+                {!! Form::hidden('id', $pdf->id) !!}
+                {!! Form::hidden('idPedido', $pedido->referencia) !!}
+                {!! Form::submit('Eliminar' , ['class' => 'btn btn-danger mt-1']) !!}  {{$pdf->url}}   - {{$pdf->id}} 
+                {!! Form::close() !!}
+            @endforeach
         </div>
     </div>
 @stop
