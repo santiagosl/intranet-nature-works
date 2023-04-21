@@ -27,7 +27,7 @@
                 @enderror
             </div>
 
-            {!! Form::submit('Crear pedido', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Crear usuario', ['class' => 'btn btn-primary']) !!}
         
 {{--             {!! Form::close() !!}
                 {!! Form::model($user, ['route' => ['admin.users.update' , $user], 'method' => 'put']) !!}

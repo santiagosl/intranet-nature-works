@@ -15,10 +15,11 @@ class Pedidos extends Model
                             , 'fecha_recogida', 'confirmacion_recogida'
                             , 'status'];
 
-    public function getRouteKeyName(){
+    //Esta funciona cambia el id en la ruta por la referencia.
+/*     public function getRouteKeyName(){
         
         return "referencia";
-    }
+    } */
 
     //Relacion uno a uno polimorfica
     public function pdf(){

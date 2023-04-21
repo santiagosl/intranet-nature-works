@@ -109,8 +109,8 @@
             @foreach ($pdfs as $pdf)
                 {!! Form::model($pdf,['route' => ['admin.pedidos.delete', $pdf, $pedido], 'method' => 'PUT']) !!}
                 {!! Form::hidden('id', $pdf->id) !!}
-                {!! Form::hidden('idPedido', $pedido->referencia) !!}
-                {!! Form::submit('Eliminar' , ['class' => 'btn btn-danger mt-1']) !!}  {{$pdf->url}}   - {{$pdf->id}} 
+                {!! Form::hidden('idPedido', $pedido->id) !!}
+                {!! Form::submit('Eliminar' , ['class' => 'btn btn-danger mt-1']) !!}  {{$pdf->url}}
                 {!! Form::close() !!}
             @endforeach
         </div>

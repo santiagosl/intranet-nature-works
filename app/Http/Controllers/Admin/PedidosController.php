@@ -15,9 +15,9 @@ class PedidosController extends Controller{
     protected $paginationTheme = "bootstrap";
 
     public function index(){
-        //$pedidos = Pedidos::all();
+        $pedidos = Pedidos::orderBy('id' , 'asc')->get();
         //$users = User::where('name', 'LIKE' , '%' . $this->word . '%')->orWhere('email', 'LIKE' , '%' . $this->word . '%')->paginate();
-        $pedidos = Pedidos::where('status')->latest('created_at')->paginate(5);
+        //$pedidos = Pedidos::where('status')->latest('created_at')->paginate(5);
         //$pedidos = Pedidos::where('status' , '<>' , null)->paginate(10);
         return view('admin.pedidos.index', compact('pedidos'));
     }
@@ -32,13 +32,17 @@ class PedidosController extends Controller{
         $pedido = Pedidos::create($request->all());
         
         if($request->file('pdf_1')){
-            $url = Storage::put('pdf' , $request->file('pdf_1'));
+            $pdf = $request->file('pdf_1');
+            $nombre = $pdf->getClientOriginalName();
+            $url = Storage::putFileAs('pdf', $pdf, $nombre);
             $pedido->pdf()->create([
                 'url' => $url
             ]);
         }
         if($request->file('pdf_2')){
-            $url = Storage::put('pdf' , $request->file('pdf_2'));
+            $pdf = $request->file('pdf_2');
+            $nombre = $pdf->getClientOriginalName();
+            $url = Storage::putFileAs('pdf', $pdf, $nombre);
             $pedido->pdf()->create([
                 'url' => $url
             ]);
@@ -47,14 +51,9 @@ class PedidosController extends Controller{
         return redirect()->route('admin.pedidos.index', $pedido)->with('info', 'El pedido se creó con éxito');
      }
 
-    public function show(Pedidos $pedido){
-        return view('admin.pedidos.show', compact('pedido'));
-    }
-
     public function edit(Pedidos $pedido){
         $pdfs = Pdf::where('imageable_id' , $pedido->id)->get();
         return view('admin.pedidos.edit', compact('pedido', 'pdfs'));
-        //dd($pdfs);
     }
 
     public function update(Request $request, Pedidos $pedido){
@@ -67,15 +66,18 @@ class PedidosController extends Controller{
 
         $pedido->update($request->all());
 
-                
         if($request->file('pdf_1')){
-            $url = Storage::put('pdf' , $request->file('pdf_1'));
+            $pdf = $request->file('pdf_1');
+            $nombre = $pdf->getClientOriginalName();
+            $url = Storage::putFileAs('pdf', $pdf, $nombre);
             $pedido->pdf()->create([
                 'url' => $url
             ]);
         }
         if($request->file('pdf_2')){
-            $url = Storage::put('pdf' , $request->file('pdf_2'));
+            $pdf = $request->file('pdf_2');
+            $nombre = $pdf->getClientOriginalName();
+            $url = Storage::putFileAs('pdf', $pdf, $nombre);
             $pedido->pdf()->create([
                 'url' => $url
             ]);
@@ -96,6 +98,7 @@ class PedidosController extends Controller{
         
         $pdf = Pdf::where('id' , $request->id);
         $pdf->delete();
-        return redirect()->route('admin.pedidos.edit',  $request->idPedido)->with('info', 'El pedido se eliminó con éxito');
+        return redirect()->route('admin.pedidos.edit',  $request->idPedido)->with('info', 'El documento se eliminó con éxito');
+
     }
 }
