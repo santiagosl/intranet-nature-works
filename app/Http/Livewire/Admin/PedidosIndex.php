@@ -10,7 +10,6 @@ class PedidosIndex extends Component
 {
     use WithPagination;
     protected $paginationTheme = "bootstrap";
-
         
     public $word = "";
 
@@ -20,10 +19,11 @@ class PedidosIndex extends Component
 
     public function render()
     {
-        $pedidos = Pedidos::where('status', 'LIKE' ,        '%' . $this->word . '%')
-                        ->orWhere('referencia', 'LIKE' ,    '%' . $this->word . '%')
-                        ->orWhere('n_albaran', 'LIKE' ,     '%' . $this->word . '%')
-                        ->paginate(10);
+        $pedidos = Pedidos::orderBy('id' , 'desc')
+                            ->where('status',       'LIKE' ,    '%' . $this->word . '%')
+                            ->orWhere('referencia', 'LIKE' ,    '%' . $this->word . '%')
+                            ->orWhere('n_albaran',  'LIKE' ,    '%' . $this->word . '%')
+                            ->paginate(10);
 
         return view('livewire.admin.pedidos-index', compact('pedidos'));
     }

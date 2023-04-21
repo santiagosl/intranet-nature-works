@@ -15,10 +15,7 @@ class PedidosController extends Controller{
     protected $paginationTheme = "bootstrap";
 
     public function index(){
-        $pedidos = Pedidos::orderBy('id' , 'asc')->get();
-        //$users = User::where('name', 'LIKE' , '%' . $this->word . '%')->orWhere('email', 'LIKE' , '%' . $this->word . '%')->paginate();
-        //$pedidos = Pedidos::where('status')->latest('created_at')->paginate(5);
-        //$pedidos = Pedidos::where('status' , '<>' , null)->paginate(10);
+        $pedidos = Pedidos::all();
         return view('admin.pedidos.index', compact('pedidos'));
     }
 
