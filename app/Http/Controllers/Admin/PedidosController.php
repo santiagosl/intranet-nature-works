@@ -85,14 +85,35 @@ class PedidosController extends Controller{
 
     public function destroy(Pedidos $pedido){
         
-        $pedido->delete();
+
+        //Eliminar archivo de la ruta del pdf del pedido eliminado.
+        $urlPdf = Pdf::where('imageable_id' , $pedido->id)->get();
+        $url = public_path('storage/' . $urlPdf[0]->url);
+
+        if (file_exists($url)) {
+            unlink($url);
+        }
+
+        //Elimina la ruta del pdf del pedido eliminado
         $pdf = Pdf::where('imageable_id' , $pedido->id);
         $pdf->delete();
+        
+        //Elimina el pedido de la bbdd
+        $pedido->delete();
+
         return redirect()->route('admin.pedidos.index', $pedido)->with('info', 'El pedido se eliminó con éxito');
     }
 
     public function delete(Request $request, Pedidos $pedido){
         
+        //Eliminar archivo de la ruta del pdf del pedido eliminado.
+        $urlPdf = Pdf::where('id' , $request->id)->get();
+        $url = public_path('storage/' . $urlPdf[0]->url);
+
+        if (file_exists($url)) {
+            unlink($url);
+        }
+        //Eliminamos el registo de la bbdd del pdf
         $pdf = Pdf::where('id' , $request->id);
         $pdf->delete();
         return redirect()->route('admin.pedidos.edit',  $request->idPedido)->with('info', 'El documento se eliminó con éxito');
