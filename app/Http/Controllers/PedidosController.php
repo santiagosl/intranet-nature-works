@@ -10,7 +10,7 @@ class PedidosController extends Controller
 {
     public function index(){
 
-        $pedidos = Pedidos::where('status' , 'Listo')->latest('created_at')->paginate(10);
+        $pedidos = Pedidos::where('status' , 'Listo')->orderBy('id' , 'desc')->paginate(10);
         return view('pedidos.index' , compact('pedidos'));
     }
 
@@ -23,6 +23,5 @@ class PedidosController extends Controller
        
         $pedido->update($request->all());
         return redirect()->route('pedidos.index', $pedido)->with('info', 'El pedido se actualizó con éxito');
-        //dd($request);
      }
 }

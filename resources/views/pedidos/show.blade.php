@@ -113,7 +113,7 @@
                             <tr>
                                 <td class="p-2">
                                     <div class="font-medium text-gray-800">
-                                        {{ $pedido->fecha_recogida }}
+                                        {{ \Carbon\Carbon::parse($pedido->fecha_recogida)->format('d-m-Y') }}
                                     </div>
                                 </td>
 

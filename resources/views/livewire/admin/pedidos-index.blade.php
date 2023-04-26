@@ -39,7 +39,7 @@
    
                             <td width="5px">{{$item->id}}</td>
                             <td width="10px">{{$item->status}}</td>
-                            <td>{{$item->fecha_creacion}}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</td>
                             <td>{{$item->referencia}}</td>
                             <td>{{$item->n_albaran}}</td>
                             <td>{{$item->observaciones}}</td>

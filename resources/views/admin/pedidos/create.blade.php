@@ -84,20 +84,19 @@
                                 {!! Form::label('pdf_2', 'Documento 2') !!}
                                 {!! Form::file('pdf_2', null,  ['class' => 'form-control']) !!}
                             </div>
-            
                             {!! Form::label('status', 'Estado del pedido') !!}
                             <div class="form-group">
-                                {!! Form::radio('status', 'Borrador', true) !!}
-                                Pedido pendiente(no se mostrará en el resumen)
+                                {!! Form::radio('status', 'Borrador', true, ['id' => 'borrador']) !!}
+                                {!! Form::label('borrador', ' Pedido pendiente(no se mostrará en el resumen)') !!}
                             </div>
             
                             <div class="form-group">
-                                {!! Form::radio('status', 'Listo') !!}
-                                Pedido listo para preparar
+                                {!! Form::radio('status', 'Listo', false, ['id' => 'listo']) !!}
+                                {!! Form::label('listo', 'Listo para preparar') !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::radio('status', 'Finalizado') !!}
-                                Pedido finalizado
+                                {!! Form::radio('status', 'Listo', false, ['id' => 'finalizado']) !!}
+                                {!! Form::label('finalizado', 'Pedido finalizado') !!}
                             </div>
                         </div>
                     </div>

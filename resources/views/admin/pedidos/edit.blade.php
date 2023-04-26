@@ -3,7 +3,7 @@
 @section('title', 'Nature Works')
 
 @section('content_header')
-    <h1>Editar pedidos</h1>
+    <h1>Editar pedido con id - {{$pedido->id}}</h1>
 @stop
 
 @section('content')
@@ -81,38 +81,41 @@
                                     {!! Form::file('pdf_1', null,  ['class' => 'form-control']) !!}
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col card mr-1">
-                        <div class="card-body">
-                            {!! Form::label('status_pedidos', 'Status del pedido') !!}
-                            <div class="form-group">
-                                {!! Form::radio('status', 'Borrador', true) !!}
-                                Pedido pendiente(no se mostrará en el resumen)
-                            </div>
-            
-                            <div class="form-group">
-                                {!! Form::radio('status', 'Listo') !!}
-                                Pedido listo para preparar
-                            </div>
-                                            
-                            <div class="form-group">
-                                {!! Form::radio('status', 'Finalizado') !!}
-                                Pedido finalizado
+                            <div class="card-body">
+                                {!! Form::label('status_pedidos', 'Status del pedido') !!}
+                                <div class="form-group">
+                                    {!! Form::radio('status', 'Borrador', true ,['id' => 'borrador']) !!}
+                                    {!! Form::label('borrador', 'Pedido pendiente(no se mostrará en el resumen)') !!}
+                                    
+                                </div>
+                
+                                <div class="form-group">
+                                    {!! Form::radio('status', 'Listo', false, ['id' => 'listo']) !!}
+                                    {!! Form::label('listo', 'Pedido listo para preparar') !!}
+                                </div>
+                                                
+                                <div class="form-group">
+                                    {!! Form::radio('status', 'Finalizado', false, ['id' => 'finalizado']) !!}
+                                    {!! Form::label('finalizado', 'Pedido finalizado') !!}
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
                 {!! Form::submit('Actualizar pedido', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
 
-            {!! Form::label('eliminar_documento', 'Eliminar documento') !!}
-            @foreach ($pdfs as $pdf)
-                {!! Form::model($pdf,['route' => ['admin.pedidos.delete', $pdf, $pedido], 'method' => 'PUT']) !!}
-                {!! Form::hidden('id', $pdf->id) !!}
-                {!! Form::hidden('idPedido', $pedido->id) !!}
-                {!! Form::submit('Eliminar' , ['class' => 'btn btn-danger mt-1']) !!}  {{$pdf->url}}
-                {!! Form::close() !!}
-            @endforeach
+            @if ($pdfs->count())
+                {!! Form::label('eliminar_documento', 'Eliminar documentos' , ['class' => 'mt-3']) !!}
+                @foreach ($pdfs as $pdf)
+                    {!! Form::model($pdf,['route' => ['admin.pedidos.delete', $pdf, $pedido], 'method' => 'PUT']) !!}
+                    {!! Form::hidden('id', $pdf->id) !!}
+                    {!! Form::hidden('idPedido', $pedido->id) !!}
+                    {!! Form::submit('Eliminar' , ['class' => 'btn btn-danger mt-1']) !!} - {{$pdf->url}}
+                    {!! Form::close() !!}
+                @endforeach
+            @endif
+
         </div>
     </div>
 @stop

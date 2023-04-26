@@ -27,7 +27,7 @@
                                 <tr>
                                     <td class="px-2 py-4 text-sm font-medium whitespace-nowrap">
                                         <div>
-                                            <h2 class="font-medium text-gray-800 dark:text-white ">{{$pedido->fecha_creacion}}</h2>
+                                            <h2 class="font-medium text-gray-800 dark:text-white ">{{ \Carbon\Carbon::parse($pedido->created_at)->format('d-m-Y') }}</h2>                               
                                         </div>
                                     </td>
                                     <td class="px-2 py-4 text-sm font-medium whitespace-nowrap">
