@@ -25,4 +25,9 @@ class Pedidos extends Model
     public function pdf(){
         return $this->morphOne(Pdf::class, 'imageable');
     }
+
+    //Relacion uno a uno polimorfica
+    public function imagen(){
+        return $this->morphOne(Imagenes::class, 'imageable');
+    }
 }
