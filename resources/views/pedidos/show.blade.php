@@ -33,7 +33,7 @@
                             <tr>
                                 <td class="p-2">
                                     <div class="font-medium text-gray-800">
-                                        {{ $pedido->fecha_creacion }}
+                                        {{ \Carbon\Carbon::parse($pedido->fecha_creacion)->format('d-m-Y') }}
                                     </div>
                                 </td>
 
@@ -140,7 +140,7 @@
                         <tr>
                          
                         <td class="p-2">
-                            <a href="storage/{{$item->url}}">Albaran</a>
+                            <a href="storage/{{$item->url}}" target="_blank">Ver documento</a>
                         </td>
                            
                         </tr>
@@ -150,13 +150,15 @@
 
                 </div>
 
-                <div class="w-full text-center inline-block">
+                <div class="mt-20 w-full text-center inline-block">
                     {!! Form::model($pedido, ['route' => ['pedidos.update' , $pedido], 'method' => 'put']) !!}
                         {!! Form::hidden('status', 'Finalizado') !!}    
                     {!! Form::submit('Finalizar pedido', ['class' => 'w-full text-center inline-block rounded bg-green-300 px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'] ) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
+          
+
     </section>
 
     <script>

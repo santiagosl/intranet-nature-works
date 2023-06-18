@@ -24,6 +24,12 @@ class UserController extends Controller
 
     public function store(Request $request){
 
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6',
+        ]);
+           
         $password = bcrypt($request->input('password'));
         $user = User::create([
             'name'      => $request->input('name'),
@@ -31,10 +37,6 @@ class UserController extends Controller
             'password'  => $password,
         ]);
 
-        $this->validate($request, [
-            'password' => 'required|min:6',
-        ]);
-   
         return redirect()->route('admin.users.index', $user)->with('info', 'El usuario se creó con éxito');
 
     }
