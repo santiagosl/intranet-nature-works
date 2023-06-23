@@ -131,7 +131,7 @@
                     <thead  class="text-xs font-semibold uppercase text-gray-400 bg-green-50">
                         <tr>
                             <th colspan="2" class="p-2">
-                                <div class="font-semibold text-left">Documentacion</div>
+                                <div class="font-semibold text-left">Documentación</div>
                             </th>
 
                         </tr>

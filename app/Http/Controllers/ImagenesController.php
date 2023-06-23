@@ -20,8 +20,7 @@ class ImagenesController extends Controller
             $filename = $file->getClientOriginalName();
             $file->move(public_path('photos'), $filename);
         }
-        //dd($request->all());
-        
+       
     }
 }
 
